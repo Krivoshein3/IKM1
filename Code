@@ -1,0 +1,66 @@
+#include <MeMEgaPi.h>
+const byte intexruptPin1 = 18;
+const byte intexruptPin1 = 19;
+const byte intexruptPin1 = 3;
+
+const byte NE1 = 31;
+const byte NE2 = 38;
+const byte NE3 = 49;
+long count = 0;
+unsigned long time;
+unsigned long last_time;
+MeMegaPiDCMotor motor1 (PORT1B);
+MeMegaPiDCMotor motor2 (PORT2B);
+MeMegaPiDCMotor motor3 (PORT3B);
+uint8_t motorSpeed = 100;
+void setup()
+{
+  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(NE1, INPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptPin1),blink, RISING);
+  Serial.begin(9600);
+  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(NE2, INPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptPin2),blink, RISING);
+  Serial.begin(9600);
+  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(NE3, INPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptPin3),blink, RISING);
+  Serial.begin(9600);
+}
+void loop()
+{
+  motor1.run(motorSpeed);
+  time =millis();
+  if(time -last_time>2000)
+  {
+      Serial.println(count);
+      last_time = time;
+  }
+    motor2.run(motorSpeed);
+  time =millis();
+  if(time -last_time>2000)
+  {
+      Serial.println(count);
+      last_time = time;
+  }
+    motor3.run(motorSpeed);
+  time =millis();
+  if(time -last_time>2000)
+  {
+      Serial.println(count);
+      last_time = time;
+  }
+  
+}
+void blink()
+{
+  if(digitalRead(NE1)>0)
+  count++;
+  else
+  count --1;
+  if(digitalRead(NE2)>0)
+  count++;
+  else
+  count --1;if(digitalRead(NE3)>0)
+  count++;
