@@ -64,3 +64,4 @@ void blink()
   else
   count --1;if(digitalRead(NE3)>0)
   count++;
+}
