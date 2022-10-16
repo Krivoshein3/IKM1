@@ -19,11 +19,11 @@ void setup()
   pinMode(NE1, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin1),blink, RISING);
   Serial.begin(9600);
-  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(interruptPin2, INPUT_PULLUP);
   pinMode(NE2, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin2),blink, RISING);
   Serial.begin(9600);
-  pinMode(interruptPin1, INPUT_PULLUP);
+  pinMode(interruptPin3, INPUT_PULLUP);
   pinMode(NE3, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin3),blink, RISING);
   Serial.begin(9600);
